@@ -8,6 +8,9 @@ namespace FunkcijuPamoka1
         {
             Console.WriteLine("Hello World!");
             int a = 1;
+            int a;
+            int b = Convert.ToInt32(Console.ReadLine());
+
         }
     }
 }
