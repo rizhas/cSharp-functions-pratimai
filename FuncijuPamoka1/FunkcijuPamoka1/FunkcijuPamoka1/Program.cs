@@ -7,10 +7,16 @@ namespace FunkcijuPamoka1
         public static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            int a = 1;
             int a;
             int b = Convert.ToInt32(Console.ReadLine());
 
+            //for salyga.
+
+            for (int i = 0; i < b; i++)
+            {
+                a = i;
+                Console.WriteLine(a);
+            }
         }
     }
 }
