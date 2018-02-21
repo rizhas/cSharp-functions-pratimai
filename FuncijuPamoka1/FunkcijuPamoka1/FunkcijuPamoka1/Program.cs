@@ -7,6 +7,7 @@ namespace FunkcijuPamoka1
         public static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            int a = 1;
         }
     }
 }
