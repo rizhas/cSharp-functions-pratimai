@@ -8,7 +8,7 @@ namespace SkaiciusZodzhiais_NamuDarbai
         {
             //Ivedimas + bool (TIESA) + atvaizdavimas
 
-            Console.WriteLine("Iveskite skaiciu nuo -9 iki 9.");
+            Console.WriteLine("Iveskite skaiciu nuo -20 iki 20.");
             string skaiciusZODZIAIS = Console.ReadLine();
             bool tiesa = skaichiusTeisingas(skaiciusZODZIAIS);
             Console.WriteLine(tiesa);
@@ -46,7 +46,6 @@ namespace SkaiciusZodzhiais_NamuDarbai
                     if (simbolis != '-' || i != 0)
                     {
                         return false;
-                        break;
                     }
                 }
             }
@@ -58,7 +57,7 @@ namespace SkaiciusZodzhiais_NamuDarbai
         static bool StringToInt(int sk1)
         {
             bool teisingas = false;
-            if (sk1 >= -9 && sk1 <= 9)
+            if (sk1 >= -20 && sk1 <= 20)
             {
                 teisingas = true;
             }
@@ -105,6 +104,39 @@ namespace SkaiciusZodzhiais_NamuDarbai
                     break;
                 case 9:
                     spausdintiZodziais = "DEVINI";
+                    break;
+                case 10:
+                    spausdintiZodziais = "DESIMT";
+                    break;
+                case 11:
+                    spausdintiZodziais = "VIENUOLIKA";
+                    break;
+                case 12:
+                    spausdintiZodziais = "DVYLIKA";
+                    break;
+                case 13:
+                    spausdintiZodziais = "TRYLIKA";
+                    break;
+                case 14:
+                    spausdintiZodziais = "KETURIOLIKA";
+                    break;
+                case 15:
+                    spausdintiZodziais = "PENKIOLIKA";
+                    break;
+                case 16:
+                    spausdintiZodziais = "SESIOLIKA";
+                    break;
+                case 17:
+                    spausdintiZodziais = "SEPTINIOLIKA";
+                    break;
+                case 18:
+                    spausdintiZodziais = "ASTUONIOLIKA";
+                    break;
+                case 19:
+                    spausdintiZodziais = "DEVINIOLIKA";
+                    break;
+                case 20:
+                    spausdintiZodziais = "DVIDESIMT";
                     break;
                 default:
                     spausdintiZodziais = "NULIS";
