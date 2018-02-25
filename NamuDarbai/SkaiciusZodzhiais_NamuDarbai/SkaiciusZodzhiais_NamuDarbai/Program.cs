@@ -9,9 +9,13 @@ namespace SkaiciusZodzhiais_NamuDarbai
             //Ivedimas + bool (TIESA) + atvaizdavimas
 
             Console.WriteLine("Iveskite skaiciu nuo -20 iki 20.");
+            // Skaiciaus patikrinimas. string
             string skaiciusZODZIAIS = Console.ReadLine();
+            // Skaiciaus ribu patikrinimas. int
             bool tiesa = skaichiusTeisingas(skaiciusZODZIAIS);
             Console.WriteLine(tiesa);
+
+            // Jeigu skaichius teisingai ivestas tesem uzduoti toliau.
 
             if (tiesa == true)
             {
@@ -19,13 +23,28 @@ namespace SkaiciusZodzhiais_NamuDarbai
                 bool tiesaINT = StringToInt(konvertuotasSK);
                 Console.WriteLine("skaichius INT yra " + tiesaINT);
                 string nulis = "";
+                string desimtis = "";
+
+                //Jaigu skaichius minusinis pridedam MINUSA ir perkelem ji i pliusine puse.
+
                 if (konvertuotasSK < 0)
                 {
                     nulis = "MINUS ";
                     konvertuotasSK = konvertuotasSK * -1;
                 }
-                Console.WriteLine(nulis + SpausdintiVienetus(konvertuotasSK));
+
+                if (konvertuotasSK > 20 && konvertuotasSK < 100)
+                {
+                    desimtis = Desimtis(ref konvertuotasSK);
+                }
+
+                //Spausdinam skaichiu ZHODZHIAIS.
+
+                Console.WriteLine(nulis + desimtis + SpausdintiVienetus(konvertuotasSK));
             }
+
+            //Praleidzhiam uzhduoti ir ishmetam klaida.
+
             else
             {
                 Console.WriteLine("Kadangi Skaichius ivestas blogai, programa sustabdoma...");
@@ -33,7 +52,7 @@ namespace SkaiciusZodzhiais_NamuDarbai
 
         }
 
-        // Skaiciaus patikrinimas. [FUNKCIJA]
+        // Skaiciaus patikrinimas. string [FUNKCIJA]
 
         static bool skaichiusTeisingas(string sk1)
         {
@@ -57,12 +76,14 @@ namespace SkaiciusZodzhiais_NamuDarbai
         static bool StringToInt(int sk1)
         {
             bool teisingas = false;
-            if (sk1 >= -20 && sk1 <= 20)
+            if (sk1 >= -100 && sk1 <= 100)
             {
                 teisingas = true;
             }
             return teisingas;
         }
+
+        // Teksto spausdinimas nuo -20 iki 20.
 
         static string SpausdintiVienetus(int sk1)
         {
@@ -138,11 +159,48 @@ namespace SkaiciusZodzhiais_NamuDarbai
                 case 20:
                     spausdintiZodziais = "DVIDESIMT";
                     break;
+                case 30:
+                    spausdintiZodziais = "TRISDESIMT";
+                    break;
+                case 40:
+                    spausdintiZodziais = "KETURESDESIMT";
+                    break;
+                case 50:
+                    spausdintiZodziais = "PENKESDESIMT";
+                    break;
                 default:
                     spausdintiZodziais = "NULIS";
                     break;
             }
             return spausdintiZodziais;
+        }
+
+        static string Desimtis(ref int sk1)
+        {
+            string vardas = "";
+            if (sk1 > 20 && sk1 < 30)
+            {
+                vardas = "DVIDESIMT ";
+                sk1 = sk1 - 20;
+            }
+            if (sk1 > 30 && sk1 < 40)
+            {
+                vardas = "TRISDESIMT ";
+                sk1 = sk1 - 30;
+            }
+            if (sk1 > 40 && sk1 < 50)
+            {
+                vardas = "KETURESDESIMT ";
+                sk1 = sk1 - 40;
+            }
+            if (sk1 > 50 && sk1 < 60)
+            {
+                vardas = "PENKESDESIMT ";
+                sk1 = sk1 - 50;
+            }
+           
+
+            return vardas;
         }
         //PABAIGA.
     }
