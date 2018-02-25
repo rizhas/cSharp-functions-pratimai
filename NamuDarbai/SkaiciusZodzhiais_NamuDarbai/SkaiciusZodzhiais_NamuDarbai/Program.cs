@@ -168,12 +168,29 @@ namespace SkaiciusZodzhiais_NamuDarbai
                 case 50:
                     spausdintiZodziais = "PENKESDESIMT";
                     break;
+                case 60:
+                    spausdintiZodziais = "SESESDESIMT";
+                    break;
+                case 70:
+                    spausdintiZodziais = "SEPTINESDESIMT";
+                    break;
+                case 80:
+                    spausdintiZodziais = "ASTUONESDESIMT";
+                    break;
+                case 90:
+                    spausdintiZodziais = "DEVINESDESIMT";
+                    break;
+                case 100:
+                    spausdintiZodziais = "SIMTAS";
+                    break;
                 default:
                     spausdintiZodziais = "NULIS";
                     break;
             }
             return spausdintiZodziais;
         }
+
+        //PARASHO DESIMTIS!
 
         static string Desimtis(ref int sk1)
         {
@@ -198,9 +215,27 @@ namespace SkaiciusZodzhiais_NamuDarbai
                 vardas = "PENKESDESIMT ";
                 sk1 = sk1 - 50;
             }
-           
-
-            return vardas;
+            if (sk1 > 60 && sk1 < 70)
+            {
+                vardas = "SESESDESIMT ";
+                sk1 = sk1 - 60;
+            }
+            if (sk1 > 70 && sk1 < 80)
+            {
+                vardas = "SEPTINESDESIMT ";
+                sk1 = sk1 - 70;
+            }
+            if (sk1 > 80 && sk1 < 90)
+            {
+                vardas = "ASTUONESDESIMT ";
+                sk1 = sk1 - 80;
+            }
+            if (sk1 > 90 && sk1 < 100)
+            {
+                vardas = "DEVINESDESIMT ";
+                sk1 = sk1 - 90;
+            }
+          return vardas;
         }
         //PABAIGA.
     }
