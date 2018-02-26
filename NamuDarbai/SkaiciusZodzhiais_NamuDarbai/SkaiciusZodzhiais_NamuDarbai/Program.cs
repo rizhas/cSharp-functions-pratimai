@@ -8,7 +8,7 @@ namespace SkaiciusZodzhiais_NamuDarbai
         {
             //Ivedimas + bool (TIESA) + atvaizdavimas
 
-            Console.WriteLine("Iveskite skaiciu nuo -20 iki 20.");
+            Console.WriteLine("Iveskite skaiciu nuo -999 iki 999.");
             // Skaiciaus patikrinimas. string
             string skaiciusZODZIAIS = Console.ReadLine();
             // Skaiciaus ribu patikrinimas. int
@@ -24,6 +24,7 @@ namespace SkaiciusZodzhiais_NamuDarbai
                 Console.WriteLine("skaichius INT yra " + tiesaINT);
                 string nulis = "";
                 string desimtis = "";
+                string simtai = "";
 
                 //Jaigu skaichius minusinis pridedam MINUSA ir perkelem ji i pliusine puse.
 
@@ -33,6 +34,15 @@ namespace SkaiciusZodzhiais_NamuDarbai
                     konvertuotasSK = konvertuotasSK * -1;
                 }
 
+                //Skaichiai nuo 100 iki 1000.
+
+                if (konvertuotasSK > 100 && konvertuotasSK < 1000)
+                {
+                    simtai = Simtai(ref konvertuotasSK);
+                }
+
+                //Skaichiai nuo 20 iki 100.
+
                 if (konvertuotasSK > 20 && konvertuotasSK < 100)
                 {
                     desimtis = Desimtis(ref konvertuotasSK);
@@ -40,7 +50,7 @@ namespace SkaiciusZodzhiais_NamuDarbai
 
                 //Spausdinam skaichiu ZHODZHIAIS.
 
-                Console.WriteLine(nulis + desimtis + SpausdintiVienetus(konvertuotasSK));
+                Console.WriteLine(nulis + simtai + desimtis + SpausdintiVienetus(konvertuotasSK));
             }
 
             //Praleidzhiam uzhduoti ir ishmetam klaida.
@@ -76,7 +86,7 @@ namespace SkaiciusZodzhiais_NamuDarbai
         static bool StringToInt(int sk1)
         {
             bool teisingas = false;
-            if (sk1 >= -100 && sk1 <= 100)
+            if (sk1 >= -1000 && sk1 <= 1000)
             {
                 teisingas = true;
             }
@@ -236,6 +246,27 @@ namespace SkaiciusZodzhiais_NamuDarbai
                 sk1 = sk1 - 90;
             }
           return vardas;
+        }
+
+        //PARASHO SHIMTUS!
+
+        static string Simtai(ref int sk1)
+        {
+            string vardas = "";
+            int a = sk1;
+            /*if (sk1 > 100 && sk1 < 200)
+            {
+                vardas = "SIMTAS ";
+                sk1 = sk1 - 100;
+            }*/
+            if (sk1 > -1000 && sk1 < 1000)
+            {
+                a = sk1 / 100;
+                vardas = SpausdintiVienetus(a) + " SIMTAI ";
+                a = a * 100;
+                sk1 = sk1 - a;
+            }
+            return vardas;
         }
         //PABAIGA.
     }
