@@ -251,43 +251,43 @@ namespace SkaiciusZodzhiais_NamuDarbai
         static string Tukstanciai(ref int sk1)
         {
             string vardas = "";
-            //string vardas1 = "";  --- TUKSTANCIU ZHODZHIU VARIACIJOM!
+            string vardas1 = "TUKSTANCIAI "; // --- TUKSTANCIU ZHODZHIU VARIACIJOM!
             int a = sk1;
             string vienetas = ""; //Vienetai(a);
             string simtai = ""; //Simtai(ref a);
             string desimtis = ""; //Desimtis(ref a);
-            if (sk1 >= 1000 && sk1 < 2000)
-            {
-                vardas = "TUKSTANTIS ";
-                sk1 = sk1 - 1000;
-            }
-            else
+
+            if (sk1 >= 1000 && sk1 < 1000000)
             {
                 a = sk1 / 1000;
                 int b = a;
-                if (sk1 >= 2000 && sk1 < 1000000)
                 {
-                    Console.WriteLine("virsh 100 000 - " + b);
-                    // SIMTAI - tukstantije.
+                   // SIMTAI - tukstantije.
                     simtai = Simtai(ref b);
                 }
                 //DESIMTIS - tukstantije.
                 if (b > 20 && b < 100)
                 {
-                    Console.WriteLine("virsh 10 000 - " + b);
-                    desimtis = Desimtis(ref b);
+                  desimtis = Desimtis(ref b);
                 }
                 //VIENETAI tukstantije.
-                if (b>0)
+                if (b > 0)
                 {
-                    Console.WriteLine("virsh 1 000 - " + b);
-                    vienetas = Vienetai(b);
+                   vienetas = Vienetai(b);
                 }
-                  //TEKSTO ISHVEDIMAS!
-                    vardas = simtai + desimtis + vienetas + "TUKSTANTIS ";
-                    a = a * 1000;
-                    sk1 = sk1 - a;
+                //TEKSTO ISHVEDIMAS!
+                if (vienetas == "VIENAS ")
+                {
+                    vardas1 = "TUKSTANTIS ";
+                    if (simtai == "" && desimtis == "")
+                    {
+                        vienetas = "";
+                    }
                 }
+                vardas = simtai + desimtis + vienetas + vardas1;
+                a = a * 1000;
+                sk1 = sk1 - a;
+            }
 
             return vardas;
 
