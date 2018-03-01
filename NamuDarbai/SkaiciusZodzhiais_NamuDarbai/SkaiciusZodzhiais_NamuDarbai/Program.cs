@@ -8,7 +8,7 @@ namespace SkaiciusZodzhiais_NamuDarbai
         {
             //Ivedimas + bool (TIESA) + atvaizdavimas
 
-            Console.WriteLine("Iveskite skaiciu nuo -999 iki 999.");
+            Console.WriteLine("Iveskite skaiciu nuo -999999 iki 999999.");
             // Skaiciaus patikrinimas. string
             string skaiciusZODZIAIS = Console.ReadLine();
             // Skaiciaus ribu patikrinimas. int
@@ -22,21 +22,27 @@ namespace SkaiciusZodzhiais_NamuDarbai
                 int konvertuotasSK = Convert.ToInt32(skaiciusZODZIAIS);
                 bool tiesaINT = StringToInt(konvertuotasSK);
                 Console.WriteLine("skaichius INT yra " + tiesaINT);
-                string nulis = "";
+                string minusas = "";
                 string desimtis = "";
                 string simtai = "";
+                string tukstanciai = "";
 
                 //Jaigu skaichius minusinis pridedam MINUSA ir perkelem ji i pliusine puse.
 
                 if (konvertuotasSK < 0)
                 {
-                    nulis = "MINUS ";
+                    minusas = "MINUS ";
                     konvertuotasSK = konvertuotasSK * -1;
+                }
+
+                if (konvertuotasSK >= 1000 && konvertuotasSK < 1000000)
+                {
+                    tukstanciai = Tukstanciai(ref konvertuotasSK);
                 }
 
                 //Skaichiai nuo 100 iki 1000.
 
-                if (konvertuotasSK > 100 && konvertuotasSK < 1000)
+                if (konvertuotasSK >= 100 && konvertuotasSK < 1000)
                 {
                     simtai = Simtai(ref konvertuotasSK);
                 }
@@ -49,8 +55,8 @@ namespace SkaiciusZodzhiais_NamuDarbai
                 }
 
                 //Spausdinam skaichiu ZHODZHIAIS.
-
-                Console.WriteLine(nulis + simtai + desimtis + SpausdintiVienetus(konvertuotasSK));
+               
+                Console.WriteLine(minusas + tukstanciai + simtai + desimtis + Vienetai(konvertuotasSK));
             }
 
             //Praleidzhiam uzhduoti ir ishmetam klaida.
@@ -86,7 +92,7 @@ namespace SkaiciusZodzhiais_NamuDarbai
         static bool StringToInt(int sk1)
         {
             bool teisingas = false;
-            if (sk1 >= -1000 && sk1 <= 1000)
+            if (sk1 >= -1000000 && sk1 <= 1000000)
             {
                 teisingas = true;
             }
@@ -95,107 +101,78 @@ namespace SkaiciusZodzhiais_NamuDarbai
 
         // Teksto spausdinimas nuo -20 iki 20.
 
-        static string SpausdintiVienetus(int sk1)
+        static string Vienetai(int sk1)
         {
-            //string minus = "-";
-
-            /*if (sk1 < 0)
+            string spausdintiZodziais = "";
+            if (sk1 == 0)
             {
-                minus = "MINUS ";
-                sk1 = sk1 * -1;
-            }*/
-
-            string spausdintiZodziais = "blogai";
-           
-            switch (sk1)
+                spausdintiZodziais = "";
+            }
+            else
             {
-                case 1:
-                    spausdintiZodziais = "VIENAS";
-                    break;
-                case 2:
-                    spausdintiZodziais = "DU";
-                    break;
-                case 3:
-                    spausdintiZodziais = "TRIS";
-                    break;
-                case 4:
-                    spausdintiZodziais = "KETURI";
-                    break;
-                case 5:
-                    spausdintiZodziais = "PENKI";
-                    break;
-                case 6:
-                    spausdintiZodziais = "SESI";
-                    break;
-                case 7:
-                    spausdintiZodziais = "SEPTINI";
-                    break;
-                case 8:
-                    spausdintiZodziais = "ASTUONI";
-                    break;
-                case 9:
-                    spausdintiZodziais = "DEVINI";
-                    break;
-                case 10:
-                    spausdintiZodziais = "DESIMT";
-                    break;
-                case 11:
-                    spausdintiZodziais = "VIENUOLIKA";
-                    break;
-                case 12:
-                    spausdintiZodziais = "DVYLIKA";
-                    break;
-                case 13:
-                    spausdintiZodziais = "TRYLIKA";
-                    break;
-                case 14:
-                    spausdintiZodziais = "KETURIOLIKA";
-                    break;
-                case 15:
-                    spausdintiZodziais = "PENKIOLIKA";
-                    break;
-                case 16:
-                    spausdintiZodziais = "SESIOLIKA";
-                    break;
-                case 17:
-                    spausdintiZodziais = "SEPTINIOLIKA";
-                    break;
-                case 18:
-                    spausdintiZodziais = "ASTUONIOLIKA";
-                    break;
-                case 19:
-                    spausdintiZodziais = "DEVINIOLIKA";
-                    break;
-                case 20:
-                    spausdintiZodziais = "DVIDESIMT";
-                    break;
-                case 30:
-                    spausdintiZodziais = "TRISDESIMT";
-                    break;
-                case 40:
-                    spausdintiZodziais = "KETURESDESIMT";
-                    break;
-                case 50:
-                    spausdintiZodziais = "PENKESDESIMT";
-                    break;
-                case 60:
-                    spausdintiZodziais = "SESESDESIMT";
-                    break;
-                case 70:
-                    spausdintiZodziais = "SEPTINESDESIMT";
-                    break;
-                case 80:
-                    spausdintiZodziais = "ASTUONESDESIMT";
-                    break;
-                case 90:
-                    spausdintiZodziais = "DEVINESDESIMT";
-                    break;
-                case 100:
-                    spausdintiZodziais = "SIMTAS";
-                    break;
-                default:
-                    spausdintiZodziais = "NULIS";
-                    break;
+                switch (sk1)
+                {
+                    case 1:
+                        spausdintiZodziais = "VIENAS ";
+                        break;
+                    case 2:
+                        spausdintiZodziais = "DU ";
+                        break;
+                    case 3:
+                        spausdintiZodziais = "TRIS ";
+                        break;
+                    case 4:
+                        spausdintiZodziais = "KETURI ";
+                        break;
+                    case 5:
+                        spausdintiZodziais = "PENKI ";
+                        break;
+                    case 6:
+                        spausdintiZodziais = "SESI ";
+                        break;
+                    case 7:
+                        spausdintiZodziais = "SEPTINI ";
+                        break;
+                    case 8:
+                        spausdintiZodziais = "ASTUONI ";
+                        break;
+                    case 9:
+                        spausdintiZodziais = "DEVINI ";
+                        break;
+                    case 10:
+                        spausdintiZodziais = "DESIMT ";
+                        break;
+                    case 11:
+                        spausdintiZodziais = "VIENUOLIKA ";
+                        break;
+                    case 12:
+                        spausdintiZodziais = "DVYLIKA ";
+                        break;
+                    case 13:
+                        spausdintiZodziais = "TRYLIKA ";
+                        break;
+                    case 14:
+                        spausdintiZodziais = "KETURIOLIKA ";
+                        break;
+                    case 15:
+                        spausdintiZodziais = "PENKIOLIKA ";
+                        break;
+                    case 16:
+                        spausdintiZodziais = "SESIOLIKA ";
+                        break;
+                    case 17:
+                        spausdintiZodziais = "SEPTINIOLIKA ";
+                        break;
+                    case 18:
+                        spausdintiZodziais = "ASTUONIOLIKA ";
+                        break;
+                    case 19:
+                        spausdintiZodziais = "DEVINIOLIKA ";
+                        break;
+                    default:
+                        spausdintiZodziais = "NULIS ";
+                        break;
+                }
             }
             return spausdintiZodziais;
         }
@@ -205,42 +182,42 @@ namespace SkaiciusZodzhiais_NamuDarbai
         static string Desimtis(ref int sk1)
         {
             string vardas = "";
-            if (sk1 > 20 && sk1 < 30)
+            if (sk1 >= 20 && sk1 < 30)
             {
                 vardas = "DVIDESIMT ";
                 sk1 = sk1 - 20;
             }
-            if (sk1 > 30 && sk1 < 40)
+            if (sk1 >= 30 && sk1 < 40)
             {
                 vardas = "TRISDESIMT ";
                 sk1 = sk1 - 30;
             }
-            if (sk1 > 40 && sk1 < 50)
+            if (sk1 >= 40 && sk1 < 50)
             {
                 vardas = "KETURESDESIMT ";
                 sk1 = sk1 - 40;
             }
-            if (sk1 > 50 && sk1 < 60)
+            if (sk1 >= 50 && sk1 < 60)
             {
                 vardas = "PENKESDESIMT ";
                 sk1 = sk1 - 50;
             }
-            if (sk1 > 60 && sk1 < 70)
+            if (sk1 >= 60 && sk1 < 70)
             {
                 vardas = "SESESDESIMT ";
                 sk1 = sk1 - 60;
             }
-            if (sk1 > 70 && sk1 < 80)
+            if (sk1 >= 70 && sk1 < 80)
             {
                 vardas = "SEPTINESDESIMT ";
                 sk1 = sk1 - 70;
             }
-            if (sk1 > 80 && sk1 < 90)
+            if (sk1 >= 80 && sk1 < 90)
             {
                 vardas = "ASTUONESDESIMT ";
                 sk1 = sk1 - 80;
             }
-            if (sk1 > 90 && sk1 < 100)
+            if (sk1 >= 90 && sk1 < 100)
             {
                 vardas = "DEVINESDESIMT ";
                 sk1 = sk1 - 90;
@@ -254,19 +231,66 @@ namespace SkaiciusZodzhiais_NamuDarbai
         {
             string vardas = "";
             int a = sk1;
-            /*if (sk1 > 100 && sk1 < 200)
+            if (sk1 >= 100 && sk1 < 200)
             {
                 vardas = "SIMTAS ";
                 sk1 = sk1 - 100;
-            }*/
-            if (sk1 > -1000 && sk1 < 1000)
+            }
+            else if (sk1 >= 200 && sk1 < 1000)
             {
-                a = sk1 / 100;
-                vardas = SpausdintiVienetus(a) + " SIMTAI ";
-                a = a * 100;
-                sk1 = sk1 - a;
+                    a = sk1 / 100;
+                    vardas = Vienetai(a) + "SIMTAI ";
+                    a = a * 100;
+                    sk1 = sk1 - a;
             }
             return vardas;
+        }
+
+        //PARASHO TUKSTANCIUS.
+
+        static string Tukstanciai(ref int sk1)
+        {
+            string vardas = "";
+            //string vardas1 = "";  --- TUKSTANCIU ZHODZHIU VARIACIJOM!
+            int a = sk1;
+            string vienetas = ""; //Vienetai(a);
+            string simtai = ""; //Simtai(ref a);
+            string desimtis = ""; //Desimtis(ref a);
+            if (sk1 >= 1000 && sk1 < 2000)
+            {
+                vardas = "TUKSTANTIS ";
+                sk1 = sk1 - 1000;
+            }
+            else
+            {
+                a = sk1 / 1000;
+                int b = a;
+                if (sk1 >= 2000 && sk1 < 1000000)
+                {
+                    Console.WriteLine("virsh 100 000 - " + b);
+                    // SIMTAI - tukstantije.
+                    simtai = Simtai(ref b);
+                }
+                //DESIMTIS - tukstantije.
+                if (b > 20 && b < 100)
+                {
+                    Console.WriteLine("virsh 10 000 - " + b);
+                    desimtis = Desimtis(ref b);
+                }
+                //VIENETAI tukstantije.
+                if (b>0)
+                {
+                    Console.WriteLine("virsh 1 000 - " + b);
+                    vienetas = Vienetai(b);
+                }
+                  //TEKSTO ISHVEDIMAS!
+                    vardas = simtai + desimtis + vienetas + "TUKSTANTIS ";
+                    a = a * 1000;
+                    sk1 = sk1 - a;
+                }
+
+            return vardas;
+
         }
         //PABAIGA.
     }
