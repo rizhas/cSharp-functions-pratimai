@@ -34,6 +34,10 @@ namespace SkaiciusZodzhiais_NamuDarbai
                     minusas = "MINUS ";
                     konvertuotasSK = konvertuotasSK * -1;
                 }
+                if (konvertuotasSK == 0)
+                {
+                    minusas = "nulis";
+                }
 
                 if (konvertuotasSK >= 1000 && konvertuotasSK < 1000000)
                 {
@@ -49,7 +53,7 @@ namespace SkaiciusZodzhiais_NamuDarbai
 
                 //Skaichiai nuo 20 iki 100.
 
-                if (konvertuotasSK > 20 && konvertuotasSK < 100)
+                if (konvertuotasSK >= 20 && konvertuotasSK < 100)
                 {
                     desimtis = Desimtis(ref konvertuotasSK);
                 }
