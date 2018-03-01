@@ -278,6 +278,10 @@ namespace SkaiciusZodzhiais_NamuDarbai
                 if (b > 0)
                 {
                    vienetas = Vienetai(b);
+                    if (b >= 10 && b <= 20)
+                    {
+                        vardas1 = "TUKSTANCIU ";
+                    }
                 }
                 //TEKSTO ISHVEDIMAS!
                 if (vienetas == "VIENAS ")
